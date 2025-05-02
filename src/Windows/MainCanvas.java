@@ -1,13 +1,16 @@
 package Windows;
 
+import Sprites.CanvasRepaintListener;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class MainCanvas extends JPanel {
+    private final CanvasRepaintListener controller;
     private long lastFrameTime;
-    private final MainWindow controller;
+//    private final MainWindow controller;
 
-    public MainCanvas(MainWindow controller) {
+    public MainCanvas(CanvasRepaintListener controller) {
         this.controller = controller;
         lastFrameTime = System.nanoTime();
 
@@ -25,7 +28,7 @@ public class MainCanvas extends JPanel {
             throw new RuntimeException(e);
         }
         float deltaTime = (System.nanoTime() - lastFrameTime) * 0.000000001f;
-        controller.onDrowFrame(this, g, deltaTime);
+        controller.onDrawFrame(this, g, deltaTime);
         lastFrameTime = System.nanoTime();
         repaint();
     }

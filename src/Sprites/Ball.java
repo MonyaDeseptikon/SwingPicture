@@ -21,7 +21,7 @@ public class Ball extends Sprite{
 
     @Override
   public   void update(MainCanvas canvas, float deltaTime) {
-//        super.update(canvas, deltaTime);
+
         x+=vX*deltaTime;
         y+=vY*deltaTime;
         if (getLeft()< canvas.getLeft()){

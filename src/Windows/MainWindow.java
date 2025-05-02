@@ -1,14 +1,12 @@
 package Windows;
 
-import Sprites.Background;
-import Sprites.Ball;
+import Sprites.*;
 import Sprites.Rectangle;
-import Sprites.Sprite;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class MainWindow extends JFrame {
+public class MainWindow extends JFrame implements CanvasRepaintListener {
     private static final int POS_X = 400;
     private static final int POS_Y = 250;
     private static final int WINDOW_WIDTH = 1200;
@@ -34,8 +32,8 @@ public class MainWindow extends JFrame {
         }
 
     }
-
-    public void onDrowFrame(MainCanvas canvas, Graphics g, float deltaTime) {
+    @Override
+    public void onDrawFrame(MainCanvas canvas, Graphics g, float deltaTime) {
         update(canvas, deltaTime);
         render(canvas, g);
     }
