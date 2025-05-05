@@ -3,8 +3,9 @@ package Sprites;
 import Windows.MainCanvas;
 
 import java.awt.*;
+import java.awt.event.MouseListener;
 
-public class Background extends Sprite implements Interactable {
+public class Background extends Sprite {
     private float time;
     private static final float AMPLITUDE = 255f / 2f;
     private Color color;

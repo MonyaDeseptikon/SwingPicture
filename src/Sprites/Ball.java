@@ -3,6 +3,7 @@ package Sprites;
 import Windows.MainCanvas;
 
 import java.awt.*;
+import java.awt.event.MouseListener;
 import java.util.Random;
 
 public class Ball extends Sprite{

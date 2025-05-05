@@ -4,32 +4,39 @@ import Sprites.CanvasRepaintListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import static java.awt.event.MouseEvent.MOUSE_CLICKED;
 
 public class MainCanvas extends JPanel {
     private final CanvasRepaintListener controller;
     private long lastFrameTime;
-//    private final MainWindow controller;
+
+
 
     public MainCanvas(CanvasRepaintListener controller) {
         this.controller = controller;
         lastFrameTime = System.nanoTime();
 
-        setBackground(Color.BLUE);
+           }
 
-
-    }
 
     @Override
     protected void paintComponent(Graphics g) {
+
         super.paintComponent(g);
         try {
+
             Thread.sleep(5);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
         float deltaTime = (System.nanoTime() - lastFrameTime) * 0.000000001f;
         controller.onDrawFrame(this, g, deltaTime);
         lastFrameTime = System.nanoTime();
+
         repaint();
     }
 
