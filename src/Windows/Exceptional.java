@@ -11,7 +11,7 @@ public class Exceptional extends JFrame implements ActionListener, Thread.Uncaug
         Thread.setDefaultUncaughtExceptionHandler(this);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBounds(1100, 200, 500, 300);
-        add(new JPanel(){
+        add(new JPanel() {
             @Override
             public void setBackground(Color bg) {
                 super.setBackground(Color.black);
@@ -20,7 +20,7 @@ public class Exceptional extends JFrame implements ActionListener, Thread.Uncaug
 
         JButton button = new JButton("PUSH");
         button.addActionListener(this);
-          add(button, BorderLayout.SOUTH);
+        add(button, BorderLayout.SOUTH);
         setVisible(true);
 
     }
@@ -42,6 +42,8 @@ public class Exceptional extends JFrame implements ActionListener, Thread.Uncaug
 
     @Override
     public void uncaughtException(Thread t, Throwable e) {
-JOptionPane.showMessageDialog(null, e.getMessage(), "Exception", JOptionPane.ERROR_MESSAGE);
+        this.setVisible(false);
+        JOptionPane.showMessageDialog(null, e.getMessage(), "Exception", JOptionPane.ERROR_MESSAGE);
+
     }
 }
