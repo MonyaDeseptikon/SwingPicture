@@ -71,7 +71,7 @@ public class MainWindow extends JFrame implements CanvasRepaintListener, MouseLi
     }
 
     private void render(MainCanvas canvas, Graphics g) {
-        background.render(canvas, g);
+
 
         if (e != null) {
             switch (e.getButton()) {
@@ -80,19 +80,21 @@ public class MainWindow extends JFrame implements CanvasRepaintListener, MouseLi
                     break;
                 case 3:
 //                System.out.println("Нажата правая кнопка");
+                    background.render(canvas, g);
                     for (int i = 0; i < sprites.length; i++) {
                         sprites[i].render(canvas, g);
                     }
                     break;
             }
         } else {
+            background.render(canvas, g);
             for (int i = 0; i < sprites.length; i++) {
                 sprites[i].render(canvas, g);
             }
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
 
 //        SwingUtilities.invokeLater(new Runnable() {
 //            @Override
@@ -101,8 +103,6 @@ public class MainWindow extends JFrame implements CanvasRepaintListener, MouseLi
         try {
             new MainWindow(i);
             new MainWindow(j);
-        } catch (RuntimeException ignored) {
-ignored.printStackTrace();
         } finally {
             if (i > 5) i = 5;
             if (j > 5) j = 5;
