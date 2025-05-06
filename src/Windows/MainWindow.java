@@ -8,9 +8,10 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class MainWindow extends JFrame implements CanvasRepaintListener, MouseListener, Thread.UncaughtExceptionHandler {
-private static int i=10;
-    private static int j=2;
+//, Thread.UncaughtExceptionHandler
+public class MainWindow extends JFrame implements CanvasRepaintListener, MouseListener {
+    private static int i = 10;
+    private static int j = 2;
 
     private static final int POS_X = 10;
     private static final int POS_Y = 10;
@@ -21,16 +22,18 @@ private static int i=10;
     MouseEvent e;
     int amountSpr;
 
-    public MainWindow(int amountSpr) {
-        // Вариант ловли исключения
-//        try {if(amountSpr>5){}} catch (Exception e){
+    public MainWindow(int amountSpr) throws RuntimeException {
+        // Варианты ловли исключения
+        if (amountSpr > 5) throw new RuntimeException();
+//
+//        try {if(amountSpr>5){}} catch (RuntimeException e){
 //          throw  new RuntimeException(e);
 //        }
 //        finally {
 //            amountSpr=5;
 //        }
         sprites = new Sprite[amountSpr];
-        Thread.setDefaultUncaughtExceptionHandler(this);
+//        Thread.setDefaultUncaughtExceptionHandler(this);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setBounds(POS_X, POS_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
         setTitle("Шарики Кружочки");
@@ -43,7 +46,7 @@ private static int i=10;
 
         background = new Background();
         for (int i = 0; i < sprites.length; i++) {
-            if (i > 5) throw new RuntimeException("Не может быть более 5 фигур"); //Генерирование ошибки
+//            if (i > 5) throw new RuntimeException("Не может быть более 5 фигур"); //Генерирование ошибки
             sprites[i] = new Ball();
 
         }
@@ -91,15 +94,25 @@ private static int i=10;
 
     public static void main(String[] args) {
 
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new MainWindow(i);
-                new MainWindow(j);
-            }
-        });
-    }
+//        SwingUtilities.invokeLater(new Runnable() {
+//            @Override
+//            public void run() {
 
+        try {
+            new MainWindow(i);
+            new MainWindow(j);
+        } catch (RuntimeException ignored) {
+ignored.printStackTrace();
+        } finally {
+            if (i > 5) i = 5;
+            if (j > 5) j = 5;
+            new MainWindow(i);
+            new MainWindow(j);
+        }
+//
+//            }
+//        });
+    }
 
 
     @Override
@@ -128,18 +141,19 @@ private static int i=10;
 //        System.out.println("Курсор мыши ПОКИНУЛ окно");
     }
 
-    @Override
-    public void uncaughtException(Thread t, Throwable e) {
-int i = MainWindow.i;
-        int j =MainWindow.j;
-        JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка", JOptionPane.ERROR_MESSAGE);
-        this.dispose();
-        this.dispose();
-        if (i>5) i=5;
-        if (j>5) j=5;
-        new MainWindow(i);
-        new MainWindow(j);
-
-
-    }
+//    @Override
+//    public void uncaughtException(Thread t, Throwable e) {
+////        int i = MainWindow.i;
+////        int j = MainWindow.j;
+////        JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка", JOptionPane.ERROR_MESSAGE);
+////
+////        this.dispose();
+//
+////        if (i > 5) i = 5;
+////        if (j > 5) j = 5;
+////        new MainWindow(i);
+////        new MainWindow(j);
+//
+//
+//    }
 }
