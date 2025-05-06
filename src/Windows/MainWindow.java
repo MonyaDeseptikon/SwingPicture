@@ -9,7 +9,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class MainWindow extends JFrame implements CanvasRepaintListener, MouseListener, Thread.UncaughtExceptionHandler {
-
+private static int i=10;
+    private static int j=2;
 
     private static final int POS_X = 10;
     private static final int POS_Y = 10;
@@ -93,11 +94,12 @@ public class MainWindow extends JFrame implements CanvasRepaintListener, MouseLi
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new MainWindow(10);
-                new MainWindow(2);
+                new MainWindow(i);
+                new MainWindow(j);
             }
         });
     }
+
 
 
     @Override
@@ -128,10 +130,15 @@ public class MainWindow extends JFrame implements CanvasRepaintListener, MouseLi
 
     @Override
     public void uncaughtException(Thread t, Throwable e) {
-
+int i = MainWindow.i;
+        int j =MainWindow.j;
         JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка", JOptionPane.ERROR_MESSAGE);
         this.dispose();
-        new MainWindow(5);
+        this.dispose();
+        if (i>5) i=5;
+        if (j>5) j=5;
+        new MainWindow(i);
+        new MainWindow(j);
 
 
     }
