@@ -34,6 +34,7 @@ public class Test extends JFrame {
        //
         JLabel label = new JLabel(pict);
         panel.add(label);
+        //Без валидации панель может иметь нулевые значения высоты и ширины
         validate();
 
 

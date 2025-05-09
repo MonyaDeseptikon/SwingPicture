@@ -31,6 +31,7 @@ public class MainCanvas extends JPanel {
 
         float deltaTime = (System.nanoTime() - lastFrameTime) * 0.000000001f;
         controller.onDrawFrame(this, g, deltaTime);
+        //Без валидации панель может иметь нулевые значения высоты и ширины
         validate();
         lastFrameTime = System.nanoTime();
         repaint();
