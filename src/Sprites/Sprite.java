@@ -3,7 +3,7 @@ package Sprites;
 import Windows.MainCanvas;
 
 import java.awt.*;
-import java.awt.event.MouseListener;
+
 
 public abstract class Sprite implements Interactable{
     protected float x;
