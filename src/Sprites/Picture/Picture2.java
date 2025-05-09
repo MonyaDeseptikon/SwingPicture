@@ -2,11 +2,7 @@ package Sprites.Picture;
 
 import Sprites.Sprite;
 import Windows.MainCanvas;
-
 import javax.imageio.ImageIO;
-import javax.imageio.stream.FileImageInputStream;
-import javax.imageio.stream.ImageInputStream;
-import javax.imageio.stream.ImageOutputStream;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +18,7 @@ public class Picture2 extends Sprite {
     private Image pict ;
 
 
-    public Picture2() throws IOException {
+    public Picture2() {
         file = new File(getProperty("user.dir") + "/src/Images/20140624_130424_.jpg");
 
         try {

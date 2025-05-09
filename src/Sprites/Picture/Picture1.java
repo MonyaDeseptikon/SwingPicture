@@ -4,7 +4,7 @@ import Sprites.Sprite;
 import Windows.MainCanvas;
 
 import javax.imageio.ImageIO;
-import javax.imageio.stream.FileImageInputStream;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class Picture1 extends Sprite {
 
 
 
-    public Picture1() throws IOException {
+    public Picture1() {
         file = new File(getProperty("user.dir") + "/src/Images/DSC_0265_.JPG");
 
         try {

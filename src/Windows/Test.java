@@ -3,7 +3,7 @@ package Windows;
 import javax.swing.*;
 import java.awt.*;
 
-import static java.awt.Image.*;
+
 
 public class Test extends JFrame {
     private static final int POS_X = 50;

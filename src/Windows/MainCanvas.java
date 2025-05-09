@@ -4,10 +4,6 @@ import Sprites.CanvasRepaintListener;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
-import static java.awt.event.MouseEvent.MOUSE_CLICKED;
 
 public class MainCanvas extends JPanel {
     private final CanvasRepaintListener controller;
