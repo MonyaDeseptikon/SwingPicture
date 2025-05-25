@@ -15,6 +15,7 @@ import java.io.IOException;
 public class MainWindow extends JFrame implements CanvasRepaintListener, MouseListener {
 
 
+
     private static final int POS_X = 10;
     private static final int POS_Y = 10;
     private static final int WINDOW_WIDTH = 1200;
@@ -25,7 +26,9 @@ public class MainWindow extends JFrame implements CanvasRepaintListener, MouseLi
 
 
     public MainWindow() throws IOException {
+
         sprites = new Sprite[10];
+
         background = new Background();
         for (int i = 0; i < sprites.length / 2; i++) {
             sprites[i] = new Picture1();
@@ -38,7 +41,7 @@ public class MainWindow extends JFrame implements CanvasRepaintListener, MouseLi
         setUndecorated(true);
         setExtendedState(MAXIMIZED_BOTH);
         setBounds(POS_X, POS_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
-        setTitle("Шарики Кружочки");
+
         setVisible(true);
 
         MainCanvas canvas = new MainCanvas(this);
